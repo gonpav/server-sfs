@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmartFlowSheet.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SmartFlowSheetStoreContainer">
+    <EntitySet Name="Flowsheets" EntityType="SmartFlowSheet.Store.Flowsheets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Medics" EntityType="SmartFlowSheet.Store.Medics" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FlowsheetMedic" Association="SmartFlowSheet.Store.FlowsheetMedic">
+      <End Role="Flowsheet" EntitySet="Flowsheets" />
+      <End Role="Medic" EntitySet="Medics" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Flowsheets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="varchar" Nullable="false" />
+    <Property Name="durationHours" Type="varchar" Nullable="false" />
+    <Property Name="startHour" Type="varchar" Nullable="false" />
+    <Property Name="MedicId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medics">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" Nullable="false" />
+    <Property Name="lastName" Type="varchar" Nullable="false" />
+  </EntityType>
+  <Association Name="FlowsheetMedic">
+    <End Role="Flowsheet" Type="SmartFlowSheet.Store.Flowsheets" Multiplicity="*" />
+    <End Role="Medic" Type="SmartFlowSheet.Store.Medics" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Medic">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flowsheet">
+        <PropertyRef Name="MedicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SmartFlowSheet" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SFFContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Flowsheets" EntityType="SmartFlowSheet.Flowsheet" />
+          <EntitySet Name="Medics" EntityType="SmartFlowSheet.Medic" />
+          <AssociationSet Name="FlowsheetMedic" Association="SmartFlowSheet.FlowsheetMedic">
+            <End Role="Flowsheet" EntitySet="Flowsheets" />
+            <End Role="Medic" EntitySet="Medics" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Flowsheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="date" Nullable="false" />
+          <Property Type="String" Name="durationHours" Nullable="false" />
+          <Property Type="String" Name="startHour" Nullable="false" />
+          <NavigationProperty Name="Medic" Relationship="SmartFlowSheet.FlowsheetMedic" FromRole="Flowsheet" ToRole="Medic" />
+          <Property Type="Int32" Name="MedicId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="firstName" Nullable="false" />
+          <Property Type="String" Name="lastName" Nullable="false" />
+          <NavigationProperty Name="Flowsheet" Relationship="SmartFlowSheet.FlowsheetMedic" FromRole="Medic" ToRole="Flowsheet" />
+        </EntityType>
+        <Association Name="FlowsheetMedic">
+          <End Type="SmartFlowSheet.Flowsheet" Role="Flowsheet" Multiplicity="*" />
+          <End Type="SmartFlowSheet.Medic" Role="Medic" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Medic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Flowsheet">
+              <PropertyRef Name="MedicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmartFlowSheetStoreContainer" CdmEntityContainer="SFFContext">
+    <EntitySetMapping Name="Flowsheets">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartFlowSheet.Flowsheet)">
+        <MappingFragment StoreEntitySet="Flowsheets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="durationHours" ColumnName="durationHours" />
+          <ScalarProperty Name="startHour" ColumnName="startHour" />
+          <ScalarProperty Name="MedicId" ColumnName="MedicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medics">
+      <EntityTypeMapping TypeName="IsTypeOf(SmartFlowSheet.Medic)">
+        <MappingFragment StoreEntitySet="Medics">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
