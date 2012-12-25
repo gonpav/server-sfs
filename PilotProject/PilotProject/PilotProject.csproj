@@ -143,6 +143,42 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\ActivityType.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ConcentrationType.cs" />
+    <Compile Include="Models\Disease.cs" />
+    <Compile Include="Models\DoseMeasureType.cs" />
+    <Compile Include="Models\DosePerType.cs" />
+    <Compile Include="Models\Flowsheet.cs" />
+    <Compile Include="Models\Fluid.cs" />
+    <Compile Include="Models\FluidType.cs" />
+    <Compile Include="Models\Hospitalization.cs" />
+    <Compile Include="Models\LogRecord.cs" />
+    <Compile Include="Models\Medic.cs" />
+    <Compile Include="Models\Medication.cs" />
+    <Compile Include="Models\MedicationType.cs" />
+    <Compile Include="Models\MedicType.cs" />
+    <Compile Include="Models\Monitoring.cs" />
+    <Compile Include="Models\MonitoringType.cs" />
+    <Compile Include="Models\ParameterBase.cs" />
+    <Compile Include="Models\ParameterBaseType.cs" />
+    <Compile Include="Models\ParameterRangeTypeValue.cs" />
+    <Compile Include="Models\ParameterSelectionTypeValue.cs" />
+    <Compile Include="Models\ParameterTextTypeValue.cs" />
+    <Compile Include="Models\ParameterType.cs" />
+    <Compile Include="Models\ParameterValue.cs" />
+    <Compile Include="Models\ParameterValueType.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Procedure.cs" />
+    <Compile Include="Models\ProcedureType.cs" />
+    <Compile Include="Models\RouteType.cs" />
+    <Compile Include="Models\SexType.cs" />
+    <Compile Include="Models\SFFContext.cs" />
+    <Compile Include="Models\Species.cs" />
+    <Compile Include="Models\TreatmentLog.cs" />
+    <Compile Include="Models\TreatmentValueStatusType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +258,7 @@
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -241,7 +278,9 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -249,10 +288,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
