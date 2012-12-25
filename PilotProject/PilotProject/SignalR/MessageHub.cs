@@ -13,10 +13,17 @@ namespace PilotProject.SignalR
         {
             Clients.All.addMessage(message);
         }
+        public void SubToMedic(int medicId)
+        {
+            System.Diagnostics.Trace.WriteLine("Test" + medicId.ToString());
+            System.Diagnostics.Trace.WriteLine(Context.ConnectionId);
+            Groups.Add(Context.ConnectionId, medicId.ToString());
+        }
         public static void SendMedicUpdate(Medic medic)
         {
             var context = GlobalHost.ConnectionManager.GetHubContext<MessageHub>();
-            context.Clients.All.addMessage(medic);
+            System.Diagnostics.Trace.WriteLine("Sending medic update");
+            context.Clients.Group(medic.Id.ToString()).updateMedic(medic);
         }
     }
 }
