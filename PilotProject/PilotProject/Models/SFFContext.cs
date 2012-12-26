@@ -78,5 +78,7 @@ namespace PilotProject.Models
         public DbSet<PilotProject.Models.TreatmentLog> TreatmentLogs { get; set; }
 
         public DbSet<PilotProject.Models.TreatmentValueStatusType> TreatmentValueStatusTypes { get; set; }
+
+        public DbSet<PilotProject.Models.MedicType> MedicTypes { get; set; }
     }
 }

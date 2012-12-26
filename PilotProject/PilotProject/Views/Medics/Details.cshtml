@@ -1,0 +1,32 @@
+@model PilotProject.Models.Medic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Medic</legend>
+
+    <div class="display-label">customField</div>
+    <div class="display-field">@Model.customField</div>
+
+    <div class="display-label">nameFull</div>
+    <div class="display-field">@Model.nameFull</div>
+
+    <div class="display-label">nameShort</div>
+    <div class="display-field">@Model.nameShort</div>
+
+    <div class="display-label">type</div>
+    <div class="display-field">@Html.DisplayTextFor(_ => Model.type).ToString()</div>
+
+    <div class="display-label">flowsheets</div>
+    <div class="display-field">@(Model.flowsheets == null ? "None" : Model.flowsheets.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.medicID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

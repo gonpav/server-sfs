@@ -1,0 +1,59 @@
+@model IEnumerable<PilotProject.Models.Medic>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            customField
+        </th>
+        <th>
+            nameFull
+        </th>
+        <th>
+            nameShort
+        </th>
+        <th>
+            type
+        </th>
+        <th>
+            flowsheets
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.medicID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.medicID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.medicID })
+        </td>
+        <td>
+			@item.customField
+        </td>
+        <td>
+			@item.nameFull
+        </td>
+        <td>
+			@item.nameShort
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.type).ToString()
+        </td>
+        <td>
+			@(item.flowsheets == null ? "None" : item.flowsheets.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

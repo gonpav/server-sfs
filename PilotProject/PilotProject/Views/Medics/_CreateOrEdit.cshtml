@@ -1,0 +1,39 @@
+@model PilotProject.Models.Medic
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.customField)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.customField)
+    @Html.ValidationMessageFor(model => model.customField)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.nameFull)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.nameFull)
+    @Html.ValidationMessageFor(model => model.nameFull)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.nameShort)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.nameShort)
+    @Html.ValidationMessageFor(model => model.nameShort)
+</div>
+
+<div class="editor-label">
+    medicType
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.medicTypeID, ((IEnumerable<PilotProject.Models.MedicType>)ViewBag.PossiblemedicTypes).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.medicTypeID.ToString(),
+        Selected = (Model != null) && (option.medicTypeID == Model.medicTypeID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.medicTypeID)
+</div>

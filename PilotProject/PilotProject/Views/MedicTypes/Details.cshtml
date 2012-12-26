@@ -1,0 +1,23 @@
+@model PilotProject.Models.MedicType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MedicType</legend>
+
+    <div class="display-label">name</div>
+    <div class="display-field">@Model.name</div>
+
+    <div class="display-label">medics</div>
+    <div class="display-field">@(Model.medics == null ? "None" : Model.medics.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.medicTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
