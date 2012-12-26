@@ -8,15 +8,15 @@
 
 <fieldset>
     <legend>Medic</legend>
-
+    <input type="hidden" id="medicId" value="@Model.medicID"/>
     <div class="display-label">customField</div>
     <div class="display-field">@Model.customField</div>
 
     <div class="display-label">nameFull</div>
-    <div class="display-field">@Model.nameFull</div>
+    <div class="display-field" id="firstName">@Model.nameFull</div>
 
     <div class="display-label">nameShort</div>
-    <div class="display-field">@Model.nameShort</div>
+    <div class="display-field" id="lastName">@Model.nameShort</div>
 
     <div class="display-label">type</div>
     <div class="display-field">@Html.DisplayTextFor(_ => Model.type).ToString()</div>

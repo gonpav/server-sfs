@@ -9,7 +9,7 @@ namespace PilotProject
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js", "~/Scripts/jquery.signalR-1.0.0-rc1.js"));
+                        "~/Scripts/jquery-{version}.js", "~/Scripts/jquery.signalR-1.0.0-rc1.js", "~/Scripts/buzz.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));

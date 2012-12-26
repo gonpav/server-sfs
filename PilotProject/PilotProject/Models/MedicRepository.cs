@@ -40,6 +40,7 @@ namespace PilotProject.Models
                 // Existing entity
                 context.Entry(medic).State = EntityState.Modified;
             }
+            SignalR.MessageHub.SendMedicUpdate(medic);
         }
 
         public void Delete(int id)
