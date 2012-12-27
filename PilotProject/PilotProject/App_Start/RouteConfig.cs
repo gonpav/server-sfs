@@ -12,7 +12,7 @@ namespace PilotProject
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("{file}.wav");
+            routes.IgnoreRoute("Content/sound/{file}.wav");
 
             routes.MapRoute(
                 name: "Default",

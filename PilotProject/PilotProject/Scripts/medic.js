@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     var messages = $.connection.messageHub;
-    var mySound = new buzz.sound("/ding.wav");
+    var mySound = new buzz.sound("Content/sound/ding.wav");
 
     messages.client.updateMedic = function (medic) {
         console.log(medic);
