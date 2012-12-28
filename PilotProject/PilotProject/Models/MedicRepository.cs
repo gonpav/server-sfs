@@ -10,7 +10,7 @@ namespace PilotProject.Models
 { 
     public class MedicRepository : IMedicRepository
     {
-        SFFContext context = new SFFContext();
+        SFSContext context = new SFSContext();
 
         public IQueryable<Medic> All
         {

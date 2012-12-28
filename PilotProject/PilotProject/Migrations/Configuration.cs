@@ -5,14 +5,14 @@ namespace PilotProject.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PilotProject.Models.SFFContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PilotProject.Models.SFSContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PilotProject.Models.SFFContext context)
+        protected override void Seed(PilotProject.Models.SFSContext context)
         {
             //  This method will be called after migrating to the latest version.
 

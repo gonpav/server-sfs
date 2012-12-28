@@ -12,18 +12,18 @@ using PilotProject.Models;
 
 namespace PilotProject.Controllers
 {
-    public class Default1Controller : ApiController
+    public class Default2Controller : ApiController
     {
         private SFSContext db = new SFSContext();
 
-        // GET api/Default1
+        // GET api/Default2
         public IEnumerable<Medic> GetMedics()
         {
             var medics = db.Medics.Include(m => m.type);
             return medics.AsEnumerable();
         }
 
-        // GET api/Default1/5
+        // GET api/Default2/5
         public Medic GetMedic(int id)
         {
             Medic medic = db.Medics.Find(id);
@@ -35,7 +35,7 @@ namespace PilotProject.Controllers
             return medic;
         }
 
-        // PUT api/Default1/5
+        // PUT api/Default2/5
         public HttpResponseMessage PutMedic(int id, Medic medic)
         {
             if (ModelState.IsValid && id == medic.medicID)
@@ -59,7 +59,7 @@ namespace PilotProject.Controllers
             }
         }
 
-        // POST api/Default1
+        // POST api/Default2
         public HttpResponseMessage PostMedic(Medic medic)
         {
             if (ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace PilotProject.Controllers
             }
         }
 
-        // DELETE api/Default1/5
+        // DELETE api/Default2/5
         public HttpResponseMessage DeleteMedic(int id)
         {
             Medic medic = db.Medics.Find(id);
