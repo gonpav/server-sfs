@@ -17,6 +17,11 @@ namespace PilotProject
     {
         protected void Application_Start()
         {
+            //Preserve references
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling =
+                Newtonsoft.Json.PreserveReferencesHandling.All;
+
             // Register the default hubs route: ~/signalr/hubs
             RouteTable.Routes.MapHubs();
             AreaRegistration.RegisterAllAreas();
