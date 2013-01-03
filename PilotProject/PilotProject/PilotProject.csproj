@@ -149,6 +149,7 @@
     <Compile Include="Controllers\MedicTypesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
+    <Compile Include="DAL\SFSInitializer.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -156,6 +157,10 @@
     <Compile Include="Migrations\201212261029561_InitialCreate.cs" />
     <Compile Include="Migrations\201212261029561_InitialCreate.Designer.cs">
       <DependentUpon>201212261029561_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201301031710395_SecondSmallChange.cs" />
+    <Compile Include="Migrations\201301031710395_SecondSmallChange.Designer.cs">
+      <DependentUpon>201301031710395_SecondSmallChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -345,6 +350,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201212261029561_InitialCreate.resx">
       <DependentUpon>201212261029561_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301031710395_SecondSmallChange.resx">
+      <DependentUpon>201301031710395_SecondSmallChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

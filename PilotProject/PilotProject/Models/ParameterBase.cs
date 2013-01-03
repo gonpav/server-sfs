@@ -16,5 +16,16 @@ namespace PilotProject.Models
         public int planningStartHour { get; set; }
         public decimal price { get; set; }
         public bool visible { get; set; }
+
+        public int parameterBaseTypeID { get; set; }
+        public virtual ParameterBaseType parameterBaseType { get; set; }
+
+        public int parameterTypeID { get; set; }
+        public virtual ParameterType parameterType { get; set; }
+
+        public int flowsheetID { get; set; }
+        public virtual Flowsheet flowsheet { get; set; }
+
+        public virtual ICollection<ParameterValue> values { get; set; }
     }
 }
