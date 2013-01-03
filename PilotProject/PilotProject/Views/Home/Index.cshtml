@@ -7,6 +7,13 @@
     </div>
 </header>
 <div id="body">
+    <ul data-bind="foreach: medics, visible: medics().length > 0">
+        <li>
+            <!--<input type="checkbox" data-bind="checked: isDone" />-->
+            <input data-bind="value: nameFull" />
+            <!--<a href="#" data-bind="click: $parent.removeTask">Delete</a>-->
+        </li> 
+    </ul>
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
