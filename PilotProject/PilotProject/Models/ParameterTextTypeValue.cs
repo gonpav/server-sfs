@@ -5,12 +5,11 @@ using System.Web;
 
 namespace PilotProject.Models
 {
-    public class ParameterTextTypeValue
+    public class ParameterTextTypeValue: ParameterValueType
     {
         public int parameterTextTypeValueID { get; set; }
         public string parameterTypeType_Id { get; set; }
 
         public int parameterTypeID { get; set; }
-        public virtual ParameterType parameterType { get; set; }
     }
 }

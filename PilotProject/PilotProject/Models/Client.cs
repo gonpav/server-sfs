@@ -14,6 +14,7 @@ namespace PilotProject.Models
         public string nameFirst { get; set; }
         public string nameLast { get; set; }
         public string workPhone { get; set; }
+        public string address { get; set; }
 
         public virtual ICollection<Patient> pets { get; set; }
     }

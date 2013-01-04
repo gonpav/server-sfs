@@ -5,7 +5,7 @@ using System.Web;
 
 namespace PilotProject.Models
 {
-    public class ParameterRangeTypeValue
+    public class ParameterRangeTypeValue : ParameterValueType
     {
         public int parameterRangeTypeValueID { get; set; }
         public double defaultValue { get; set; }
@@ -18,6 +18,5 @@ namespace PilotProject.Models
         public string parameterTypeType_Id { get; set; }
 
         public int parameterTypeID { get; set; }
-        public virtual ParameterType parameterType { get; set; }
     }
 }

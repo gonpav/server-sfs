@@ -162,6 +162,10 @@
     <Compile Include="Migrations\201301031710395_SecondSmallChange.Designer.cs">
       <DependentUpon>201301031710395_SecondSmallChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201301032342157_new-field.cs" />
+    <Compile Include="Migrations\201301032342157_new-field.Designer.cs">
+      <DependentUpon>201301032342157_new-field.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\ActivityType.cs" />
@@ -353,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201301031710395_SecondSmallChange.resx">
       <DependentUpon>201301031710395_SecondSmallChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201301032342157_new-field.resx">
+      <DependentUpon>201301032342157_new-field.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
