@@ -7,7 +7,7 @@ using PilotProject.Models;
 
 namespace PilotProject.DAL
 {
-    public class SFSInitializer : DropCreateDatabaseIfModelChanges<SFSContext>
+    public class SFSInitializer : DropCreateDatabaseAlways<SFSContext>
     {
         protected override void Seed(SFSContext context)
         {
@@ -63,12 +63,12 @@ namespace PilotProject.DAL
             dosePerTypes.ForEach(s => context.DosePerTypes.Add(s));
             context.SaveChanges();
 
-            var hospitalizations = new List<Hospitalization>
+            var medicTypes = new List<MedicType>
             {
-                new Hospitalization { isMetricUnitSystem = true, dateCreated = DateTime.Now }
+                new MedicType { medicTypeID = 1, name = "Doctor" },
+                new MedicType { medicTypeID = 2, name = "Technician" },
             };
-
-            hospitalizations.ForEach(s => context.Hospitalizations.Add(s));
+            medicTypes.ForEach(s => context.MedicTypes.Add(s));
             context.SaveChanges();
 
             var medics = new List<Medic>
@@ -76,14 +76,6 @@ namespace PilotProject.DAL
                 new Medic { nameFull = "Dr. Dre", nameShort = "Dr. Dre", medicTypeID = 1 }
             };
             medics.ForEach(s => context.Medics.Add(s));
-            context.SaveChanges();
-
-            var medicTypes = new List<MedicType>
-            {
-                new MedicType { medicTypeID = 1, name = "Doctor" },
-                new MedicType { medicTypeID = 2, name = "Technician" },
-            };
-            medicTypes.ForEach(s => context.MedicTypes.Add(s));
             context.SaveChanges();
 
             var parameterType = new List<ParameterType> 
@@ -143,18 +135,28 @@ namespace PilotProject.DAL
 
             var patients = new List<Patient>
             {
-                new Patient { clientID = 1, sexTypeID = 3, birthday = DateTime.Now, breed = "spaniel", name = "Fluffy", visualfeatures = "calico" }
+                new Patient { clientID = 1, sexTypeID = 3, birthday = DateTime.Now, breed = "spaniel", name = "Fluffy", visualfeatures = "calico", speciesID = 1 }
             };
-            
-            var parameterBaseTypes = new List<ParameterBaseType> 
-            {
-                new ParameterBaseType { canHaveCriticalValue = true, canHavePrice = true, defaultFrequency = 6, defaultVisible = true, displayOrder = 0, isDefault = true, nameFull = "Attitude", nameShort = "Attitude" },
-                new ParameterBaseType { canHaveCriticalValue = true, canHavePrice = true, defaultFrequency = 6, defaultVisible = true, displayOrder = 0, isDefault = true, nameFull = "Temperature", nameShort = "Temperature" }
-            };
-            parameterBaseTypes.ForEach(s => context.ParameterBaseTypes.Add(s));
+
+            patients.ForEach(s => context.Patients.Add(s));
             context.SaveChanges();
 
-            var parameterValueTypes = new List<ParameterValueType>
+            var treatmentLogs = new List<TreatmentLog> 
+            {
+                new TreatmentLog { treatmentLogID = 1 }
+            };
+            treatmentLogs.ForEach(s => context.TreatmentLogs.Add(s));
+            context.SaveChanges();
+
+            var hospitalizations = new List<Hospitalization>
+            {
+                new Hospitalization { isMetricUnitSystem = true, dateCreated = DateTime.Now, patientID = 1, treatmentLogID = 1 }
+            };
+
+            hospitalizations.ForEach(s => context.Hospitalizations.Add(s));
+            context.SaveChanges();
+
+            /*var parameterValueTypes = new List<ParameterValueType>
             {
                 new ParameterValueType { name = "ParameterTextTypeValue" },
                 new ParameterValueType { name = "ParameterSelectionTypeValue" },
@@ -162,6 +164,28 @@ namespace PilotProject.DAL
                 new ParameterValueType { name = "ParameterRangeTypeValue" }
             };
             parameterValueTypes.ForEach(s => context.ParameterValueTypes.Add(s));
+            context.SaveChanges();*/
+
+            var parameterRangeTypeValues = new List<ParameterRangeTypeValue>
+            {
+                new ParameterRangeTypeValue { min = 32.0, max = 43.0, name = "Temperature range",  parameterValueTypeID = 1}
+            };
+            parameterRangeTypeValues.ForEach(s => context.ParameterRangeTypeValues.Add(s));
+            context.SaveChanges();
+
+            var parameterSelectionTypeValues = new List<ParameterSelectionTypeValue>
+            {
+                new ParameterSelectionTypeValue { values = "Depressed,BAR,QAR,Comatouse", codes = "Depressed,BAR,QAR,Comatouse", name = "Attitude selection", parameterValueTypeID = 2 }
+            };
+            parameterSelectionTypeValues.ForEach(s => context.ParameterSelectionTypeValues.Add(s));
+            context.SaveChanges();
+
+            var parameterBaseTypes = new List<ParameterBaseType> 
+            {
+                new ParameterBaseType { parameterValueTypeID = 2, canHaveCriticalValue = true, canHavePrice = true, defaultFrequency = 6, defaultVisible = true, displayOrder = 0, isDefault = true, nameFull = "Attitude", nameShort = "Attitude" },
+                new ParameterBaseType { parameterValueTypeID = 1, canHaveCriticalValue = true, canHavePrice = true, defaultFrequency = 6, defaultVisible = true, displayOrder = 0, isDefault = true, nameFull = "Temperature", nameShort = "Temperature" }
+            };
+            parameterBaseTypes.ForEach(s => context.ParameterBaseTypes.Add(s));
             context.SaveChanges();
 
             var parameterValues = new List<ParameterValue>
@@ -170,12 +194,12 @@ namespace PilotProject.DAL
                 new ParameterValue { hour = 19, treatmentValueID = 2, currentValueAsString = "20.0" }
             };
 
-            var parameterBases = new List<ParameterBase>
-            {
-                new ParameterBase { frequency = 6, planningStartHour = 19, visible = true }
-            };
-            parameterBases.ForEach(s => context.ParameterBases.Add(s));
-            context.SaveChanges();
+            //var parameterBases = new List<ParameterBase>
+            //{
+            //    new ParameterBase { frequency = 6, planningStartHour = 19, visible = true, parameterBaseTypeID = 1 }
+            //};
+            //parameterBases.ForEach(s => context.ParameterBases.Add(s));
+            //context.SaveChanges();
         }
     }
 }

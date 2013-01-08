@@ -20,8 +20,8 @@ namespace PilotProject.Models
         public int parameterBaseTypeID { get; set; }
         public virtual ParameterBaseType parameterBaseType { get; set; }
 
-        public int parameterTypeID { get; set; }
-        public virtual ParameterType parameterType { get; set; }
+        //public int parameterTypeID { get; set; }
+        //public virtual ParameterType parameterType { get; set; }
 
         public int flowsheetID { get; set; }
         public virtual Flowsheet flowsheet { get; set; }

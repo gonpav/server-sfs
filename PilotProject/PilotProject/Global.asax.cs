@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.AspNet.SignalR;
+using PilotProject.Models;
+using System.Data.Entity;
+using PilotProject.DAL;
 
 namespace PilotProject
 {
@@ -21,6 +24,8 @@ namespace PilotProject
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling =
                 Newtonsoft.Json.PreserveReferencesHandling.All;
+
+            Database.SetInitializer<SFSContext>(new SFSInitializer());
 
             // Register the default hubs route: ~/signalr/hubs
             RouteTable.Routes.MapHubs();
