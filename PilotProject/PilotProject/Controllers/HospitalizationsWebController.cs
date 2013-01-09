@@ -15,7 +15,8 @@ namespace PilotProject.Controllers
         // GET api/hospitalizationsweb
         public IEnumerable<Hospitalization> Get()
         {
-            return hospitalizationsService.GetAll();
+            var result = hospitalizationsService.GetAll();
+            return result;
             //return hospitalizations.AsEnumerable();
         }
 

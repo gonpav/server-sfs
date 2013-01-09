@@ -7,7 +7,7 @@ using PilotProject.Models;
 
 namespace PilotProject.DAL
 {
-    public class SFSInitializer : DropCreateDatabaseAlways<SFSContext>
+    public class SFSInitializer : DropCreateDatabaseIfModelChanges<SFSContext>
     {
         protected override void Seed(SFSContext context)
         {
