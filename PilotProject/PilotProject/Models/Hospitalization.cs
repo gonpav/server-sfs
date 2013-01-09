@@ -7,6 +7,10 @@ namespace PilotProject.Models
 {
     public class Hospitalization
     {
+        public Hospitalization()
+        {
+            this.dateCreated = DateTime.Now;
+        }
         public int hospitalizationID { get; set; }
         public string customField { get; set; }
         public DateTime dateCreated { get; set; }

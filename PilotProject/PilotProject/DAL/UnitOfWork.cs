@@ -11,6 +11,7 @@ namespace PilotProject.DAL
         private SFSContext context = new SFSContext();
         private GenericRepository<Medic> medicRepository;
         private GenericRepository<MedicType> medicTypeRepository;
+        private GenericRepository<Hospitalization> hospitalizationRepository;
 
         public GenericRepository<Medic> MedicRepository
         {
@@ -33,6 +34,18 @@ namespace PilotProject.DAL
                     this.medicTypeRepository = new GenericRepository<MedicType>(context);
                 }
                 return this.medicTypeRepository;
+            }
+        }
+
+        public GenericRepository<Hospitalization> HospitalizationRepository
+        {
+            get
+            {
+                if (this.hospitalizationRepository == null)
+                {
+                    this.hospitalizationRepository = new GenericRepository<Hospitalization>(context);
+                }
+                return this.hospitalizationRepository;
             }
         }
 

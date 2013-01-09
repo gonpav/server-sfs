@@ -10,7 +10,7 @@ namespace PilotProject.Models
     public class Patient
     {
         public int patientID { get; set; }
-        public DateTime birthday { get; set; }
+        public DateTime? birthday { get; set; }
         public string breed { get; set; }
         public string customField { get; set; }
         public string externalId { get; set; }
